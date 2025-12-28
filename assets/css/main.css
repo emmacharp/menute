@@ -1,0 +1,67 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: "PP Mori";
+	/* font-family: "PP Neue Montreal"; */
+	font-weight: 200;
+	font-size: 24px;
+	line-height: 1.5;
+	color: oklch(0.35 0.03 263.66);
+}
+
+body {
+	padding: 20px;
+	background-color: oklch(99% 5% 195deg);
+}
+
+img {
+	float: left;
+	width: 1200px;
+	mix-blend-mode: multiply;
+	shape-outside: url("../img/mbc.png");
+	shape-margin: 40px;
+	margin-left: -460px;
+	margin-top: 20px;
+}
+
+hr {
+	clear: both;
+	margin-bottom: 40px;
+}
+
+h1 {
+	font-family: "PP Pangaia";
+	font-size: 26cqw;
+	line-height: 0.8;
+	clear: both;
+	position: absolute;
+	bottom: 0;
+}
+
+blockquote {
+
+	& p {
+		font-family: "PP Pangaia";
+		font-weight: 500;
+		font-size: 48px;
+		line-height: 1.2;
+		max-width: 42ch;
+		text-wrap: pretty;
+	}
+
+	cite {
+		margin-top:20px;
+		display: block;
+		font-size: 0.75em;
+	}
+
+	margin-top: 160px;
+	margin-bottom: 80px;
+}
+
+h1+p {
+	margin-top: 30px;
+}
