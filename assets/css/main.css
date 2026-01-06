@@ -82,10 +82,6 @@ h1 {
 
 }
 
-h2+p {
-	font-size: calc(9.6cqw - var(--security-margin));
-	font-family: "PP Pangaia";
-}
 
 h2,h3,h4 {
 	font-family: "PP Pangaia";
@@ -227,7 +223,6 @@ body>header {
 			height: 80vh;
 			width: 56vw;
 			object-position: top right;
-			mix-blend-mode: multiply;
 			shape-outside: url("../img/mbc.png");
 			shape-margin: 80px;
 			/* margin-left: 2vw; */
