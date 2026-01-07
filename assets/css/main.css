@@ -1,3 +1,7 @@
+@view-transition {
+	navigation: auto;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -22,7 +26,68 @@ body {
 	background-color: oklch(99% 5% 195deg);
 	padding: var(--security-margin);
 	padding-bottom: 0;
+
+	&>* {
+		position: relative;
+		background-color: inherit;
+	}
 	/* animation: page-shock 120ms 6s ease-out; */
+
+	&>nav {
+		position: fixed;
+		right: 1ch;
+		background-color: inherit;
+		z-index: 1;
+		top: 50%;
+		margin-top: -1ch;
+
+		a {
+			display: block;
+			position: relative;
+			text-decoration: none;
+			font-family: "PP Pangaia";
+			color: inherit;
+			&>span {
+			justify-content: center;
+			border-radius: 50%;
+			aspect-ratio: 1;
+			width: 2ch;
+			height: 2ch;
+			border: 3px solid currentColor;
+				font-size: 2em;
+				font-weight: 500;
+				line-height: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			}
+			&>small {
+				position: absolute;
+				min-width: max-content;
+				font-size: 0.75em;
+				top: 50%;
+				margin-top: -0.5lh;
+				right: 0;
+			}
+			&:not(:hover)>small,
+			&:hover>span {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+body>footer {
+	display: flex;
+	align-items: baseline;
+	gap: 20px;
+	padding-block: 20px;
+	border-top: 3px solid currentColor;
+	margin-top: 160px;
+
+	h2 {
+		font-size: 1.1em;
+	}
 }
 
 hr {
@@ -69,7 +134,7 @@ h1 {
 	line-height: 1;
 	text-box-trim: trim-both;
 	text-box-edge: cap alphabetic;
-	-webkit-text-stroke: 10px oklch(99% 5% 195deg);
+	-webkit-text-stroke: 12px oklch(99% 5% 195deg);
 	paint-order: stroke;
 	text-align: center;
 	animation: shift-down 1ms linear both;
@@ -80,6 +145,10 @@ h1 {
 	/* animation: slogan-z-settle 90ms cubic-bezier(.25,.95,.3,1) 2.5s both; */
 	/* backface-visibility: hidden; */
 
+}
+
+ul {
+	font-size: 0.75em;
 }
 
 
@@ -100,16 +169,27 @@ h3 {
 	}
 }
 
-main>h2+* {
+h2 {
+	font-size: calc(20px + 4cqw);
+}
+
+main>h2+div {
 	margin-top: 80px;
 }
 
-h3+p {
+h3+* {
 	margin-top: 20px;
 }
 
 *+p {
 	margin-top: 0.5lh;
+}
+
+main h2+p {
+	font-size: calc(20px + 3cqw);
+	max-width: 30ch;
+	line-height: 1.25;
+	font-family: "PP Pangaia";
 }
 
 p:has(small>q) {
@@ -124,9 +204,33 @@ h1+p {
 }
 
 main>div {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr));
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
 	gap: 40px;
+
+	&>* {
+		flex-basis: 0;
+		flex-grow: 1;
+		min-width: 40ch;
+	}
+
+
+	&>:first-child:nth-last-child(2) {
+		flex-grow: 2;
+		&>div {
+			column-width: 40ch;
+			gap: 40px;
+		}
+	}
+
+	/* display: grid; */
+	/* grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr)); */
+	/* gap: 40px; */
+	
+	&+* {
+		margin-top: 100px;
+	}
 }
 
 main { 
@@ -142,14 +246,14 @@ main {
 @keyframes shift-down {
 	0% {
 		translate: 0 -0.3lh;
-		-webkit-text-stroke: 6px oklch(0.35 0.03 263.66);
-		color: oklch(99% 5% 195deg);
+		/* -webkit-text-stroke: 6px oklch(0.35 0.03 263.66); */
+		/* color: oklch(99% 5% 195deg); */
 	}
 
 	100% {
 		translate: 0;
-		-webkit-text-stroke: 6px oklch(99% 5% 195deg);
-		color: oklch(0.35 0.03 263.66);
+		/* -webkit-text-stroke: 6px oklch(99% 5% 195deg); */
+		/* color: oklch(0.35 0.03 263.66); */
 	}
 }
 
@@ -174,34 +278,39 @@ main {
 	}
 }
 
-body>header {
+body>header, body>div>header {
 	border: 3px solid  oklch(0.35 0.03 263.66);
 	background-color:oklch(99% 5% 195deg);
 	box-sizing: border-box;
 	display: flex;
-	justify-content: safe center;
+	justify-content: space-between;
 	min-height: calc(100dvh - var(--security-margin) * 2);
 	top: var(--security-margin);
 	position: sticky;
+	flex-direction: column;
+	gap: 20px;
 
 	overflow: hidden;
 
 	h1 {
-		position: absolute;
+		/* position: absolute; */
 		top: 20px;
 		left: 20px;
+		margin: 10px;
 	}
+
 
 
 	@media 
 	(aspect-ratio: 1),
-	(max-width: 100ch),
+	(max-width: 140ch),
 	(orientation: portrait) {
 
 		blockquote {
 			display: flex;
 			flex-direction: column;
-			gap: 20px;
+			flex-grow: 1;
+			
 		}
 
 		img {
@@ -214,16 +323,15 @@ body>header {
 
 	@media 
 	(aspect-ratio >= 1) and 
-	(min-width: 100ch) and 
+	(min-width: 140ch) and 
 	(orientation: landscape) {
 
-		align-items: flex-end;
+		/* align-items: flex-end; */
 		img {
 			float: left;
 			height: 80vh;
 			width: 56vw;
 			object-position: top right;
-			shape-outside: url("../img/mbc.png");
 			shape-margin: 80px;
 			/* margin-left: 2vw; */
 			transform-origin: 50% 70%;
@@ -239,7 +347,17 @@ body>header {
 			keep-up     1ms ease-out both;
 
 			animation-timeline: auto, auto, --slogan;
+
 			/* animation: sketch-talk 4200ms steps(1, end) infinite; */
+
+			&[src*="mbc"] {
+
+				shape-outside: url("../img/mbc.png");
+			}
+			&[src*="eric"] {
+
+				shape-outside: url("../img/eric.png");
+			}
 		}
 
 		p {
@@ -250,11 +368,13 @@ body>header {
 }
 
 blockquote {
-	max-width: calc(1000px + 60ch);
-	flex-basis: 100%;
-	flex-grow: 1;
+	max-width: calc(1000px + 44ch);
+	/* flex-basis: 100%; */
+	/* flex-grow: 1; */
 	background-color: inherit;
-	margin-bottom: -20px;
+	margin-bottom: -60px;
+
+			align-self: center;
 
 
 
@@ -272,7 +392,7 @@ blockquote {
 	& p {
 		font-family: "PP Pangaia";
 		font-weight: 500;
-		font-size: calc(16px + 0.9vmax + 3vh);
+		font-size: calc(16px + 0.9vmax + 2vh + 0.25vw);
 		line-height: 1.2;
 		text-wrap: pretty;
 		margin: var(--security-margin);
@@ -312,9 +432,9 @@ p q {
 }
 
 @keyframes reveal{
-  to{
-    background-size: 100%;
-  }
+	to{
+		background-size: 100%;
+	}
 }
 @keyframes page-shock {
 	0%   { transform: scale(1); }
@@ -370,11 +490,11 @@ p q {
 
 @keyframes sketch-enter {
 	0%   { transform: translateX(-60%) translateY(0%)    rotate(-5deg); }
-	14%  { transform: translateX(-52%) translateY(-10%)  rotate(4deg); }
-	28%  { transform: translateX(-44%) translateY(8%)    rotate(-3deg); }
-	42%  { transform: translateX(-36%) translateY(-10%)  rotate(2.5deg); }
-	56%  { transform: translateX(-26%) translateY(10%)   rotate(-2deg); }
-	70%  { transform: translateX(-16%) translateY(-8%)   rotate(1.5deg); }
+	14%  { transform: translateX(-52%) translateY(-6%)  rotate(4deg); }
+	28%  { transform: translateX(-44%) translateY(4%)    rotate(-3deg); }
+	42%  { transform: translateX(-36%) translateY(-6%)  rotate(2.5deg); }
+	56%  { transform: translateX(-26%) translateY(6%)   rotate(-2deg); }
+	70%  { transform: translateX(-16%) translateY(-4%)   rotate(1.5deg); }
 	84%  { transform: translateX(-8%)  translateY(6%)    rotate(-1deg); }
 	94%  { transform: translateX(-3%)  translateY(-4%)   rotate(0.6deg); }
 	100% { transform: translateX(0%)   translateY(0%)    rotate(0deg); }
