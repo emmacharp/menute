@@ -1,0 +1,23 @@
+/*
+Purpose: stack background and overlay layers inside a flexible container.
+Structure: place the base content (e.g., image and caption) before any overlay element (e.g., a status badge) so they share the same box.
+Example:
+<figure class="as-overlay">
+  <img src="artist.jpg" alt="">
+  <figcaption>Artist Name</figcaption>
+</figure>
+Guidelines: keep child count minimal and use nested helpers for precise positioning.
+*/
+.as-overlay {
+  display: grid;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+
+  & > * {
+    grid-area: 1/1;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+}

@@ -1,0 +1,35 @@
+/* MASTER SETUP */
+/* Comment out, delete & add imports
+   to tailor your ECSS stylesystem. */
+
+
+/* General ---------------------------------------- */
+
+	/* @import url("0.layers.css"); */
+	/* @import url("1.base.css"); */
+
+
+/* Theming ------------------------------------------- */
+
+		/* @import url("2.system.css"); */
+
+		/* @import url("3.language.css"); */
+		/* @import url("4.rules/0.typography.css"); */
+		/* @import url("4.rules/1.rhythm.css"); */
+		/* @import url("5.elements.css"); */
+
+		/* @import url("3.features/x-autolineheight.css"); */
+		/* @import url("3.features/x-superdiv.css"); */
+
+		/* General utilities ---------------------------------- */
+		/* Prefixed by usage. See ECSS documentation 
+		at https://ecss.info for details */
+
+/* @import url("9.utilities/0.as-forms/build.css"); */
+/* @import url("9.utilities/1.with-styles/build.css"); */
+/* @import url("7.utilities/5.and-rules/build.css"); */
+/* @import url("7.utilities/6.from-to-patterns/build.css"); */
+
+/* Third-party or extrageneous rulesets -------------- */
+/* @import url("x-special.css"); */
+@import url("x.dev/x-quarantine.css");

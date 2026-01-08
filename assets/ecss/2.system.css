@@ -1,0 +1,53 @@
+@layer theming {
+/* Initial system rules ----------------------- */
+
+	/* Apply basic typographic styles */
+	html {
+		color: var(--Color, initial);
+		font-weight: var(--FontWeight, inherit);
+		font-size: var(--FontSize, clamp(var(--MinFontSize, 15px), var(--TargetFontSize, 1.2vw), var(--MaxFontSize, 18px))); 
+		line-height: var(--RowFactor, 1.67125); 
+	}
+
+	/* Page canvas */
+	body {
+		max-width: var(--MaxBodyWidth, initial); 
+	}
+
+	/* Basic typographic sizes, colors & spacing */
+	*::before, *::after,
+	select, input, textarea, button, legend, figcaption,
+	p, li, dd, dt, a, q, cite, span, strong, small, th, td,
+	h1, h2, h3, h4, h5, h6 {
+		--FontSize: calc(var(--ScaleLevel, 1) * 1rem); 
+	}
+
+	/* Inheritance in place for child “inline” elements */
+	legend *, figcaption *, button *, p *, li *, dd *, dt *, a *, q *, cite *, span *, small *, th *, td *,
+	h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
+		font-size: inherit;
+		font-style: inherit;
+	}
+
+	select, input, textarea, button, legend, figcaption,
+	p, li, dd, dt, a, q, cite, span, strong, small, th, td,
+	h1, h2, h3, h4, h5, h6 {
+		color: var(--Color, inherit);
+		font-weight: var(--FontWeight, inherit);
+		font-size: var(--FontSize, inherit);
+		font-style: var(--FontStyle, inherit);
+		line-height: var(--LineHeight, inherit); 
+	}
+
+	strong, b {
+		font-weight: var(--FontWeight, 600);
+	}
+
+	p>:is(strong, a) {
+		line-height: inherit;
+	}
+
+	hr {
+		color: var(--Color, inherit);
+	}
+}
