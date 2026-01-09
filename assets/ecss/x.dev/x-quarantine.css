@@ -2,18 +2,14 @@
 	navigation: auto;
 }
 
-* {
-	margin: 0;
-	padding: 0;
-}
 
 html {
 	font-family: "PP Air";
 	/* font-family: "PP Neue Montreal"; */
 	font-size: clamp(16px, 4vw, 24px);
+	background-color: oklch(99% 5% 195deg);
 	font-weight: 400;
 	overscroll-behavior: none;
-	line-height: 1.5;
 	color: oklch(0.35 0.03 263.66);
 	scroll-behavior: smooth;
 	/* filter: hue-rotate(-280deg); */
@@ -24,61 +20,69 @@ html {
 
 body {
 	timeline-scope: --slogan;
-	background-color: oklch(99% 5% 195deg);
 	padding: var(--security-margin);
 	padding-bottom: 0;
+	max-width: 2000px;
+	margin-inline: auto;
+	container-type: inline-size;
+
+	&, &>* {
+		background-color: inherit;
+	}
+
 
 	&>* {
 		position: relative;
-		background-color: inherit;
 	}
 	/* animation: page-shock 120ms 6s ease-out; */
 
-	&>nav {
-		position: fixed;
-		right: 1ch;
-		background-color: inherit;
-		z-index: 1;
-		top: 50%;
-		margin-top: -1ch;
 
-		a {
-			display: block;
-			position: relative;
-			text-decoration: none;
-			font-family: "PP Pangaia";
-			color: inherit;
-			&>span {
+}
+
+[id=nav] {
+	position: fixed;
+	right: 1ch;
+	z-index: 1;
+	top: 50%;
+	margin-top: -1ch;
+	border-radius: 50%;
+
+	a {
+		display: block;
+		position: relative;
+		text-decoration: none;
+		font-family: "PP Pangaia";
+		color: inherit;
+		&>span {
 			justify-content: center;
 			border-radius: 50%;
 			aspect-ratio: 1;
 			width: 2ch;
 			height: 2ch;
 			border: 3px solid currentColor;
-				font-size: 2em;
-				font-weight: 500;
-				line-height: 0;
+			font-size: 2em;
+			font-weight: 500;
+			line-height: 0;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			}
-			&>small {
-				position: absolute;
-				min-width: max-content;
-				font-size: 0.75em;
-				top: 50%;
-				margin-top: -0.5lh;
-				right: 0;
-			}
-			&:not(:hover)>small,
-			&:hover>span {
-				opacity: 0;
-			}
+		}
+		&>small {
+			position: absolute;
+			min-width: max-content;
+			font-size: 0.75em;
+			top: 50%;
+			margin-top: -0.5lh;
+			right: 0;
+		}
+		&:not(:hover)>small,
+		&:hover>span {
+			opacity: 0;
 		}
 	}
 }
 
-body>footer {
+[id=footer] {
 	display: flex;
 	align-items: baseline;
 	gap: 20px;
@@ -151,7 +155,7 @@ h1 {
 
 @keyframes shift-down {
 	0% {
-		translate: 0 calc(-110px - 0.3lh);
+		translate: 0 calc(-0.3lh);
 		/* -webkit-text-stroke: 6px oklch(0.35 0.03 263.66); */
 		/* color: oklch(99% 5% 195deg); */
 	}
@@ -198,61 +202,60 @@ h3+* {
 }
 
 *+p {
-	margin-top: 0.5lh;
+	/* margin-top: 0.5lh; */
 }
 
 main h2+p {
 	font-size: calc(20px + 3cqw);
 	max-width: 30ch;
-	line-height: 1.25;
 	font-family: "PP Pangaia";
 }
 
-p:has(small>q) {
-}
+/* p:has(small>q) { */
+/* } */
 
-h1+p {
-	font-family: "PP Pangaia";
-	font-weight: 200;
-	font-size: calc(18px + 4vw);
-	text-align: left;
-	line-height: 1.1;
-}
+/* h1+p { */
+/* 	font-family: "PP Pangaia"; */
+/* 	font-weight: 200; */
+/* 	font-size: calc(18px + 4vw); */
+/* 	text-align: left; */
+/* 	line-height: 1.1; */
+/* } */
 
-main>div {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	gap: 40px;
+/* main>div { */
+/* 	display: flex; */
+/* 	flex-wrap: wrap; */
+/* 	align-items: baseline; */
+/* 	gap: 40px; */
 
-	&>* {
-		flex-basis: 0;
-		flex-grow: 1;
-		min-width: 40ch;
-	}
+/* 	&>* { */
+/* 		flex-basis: 0; */
+/* 		flex-grow: 1; */
+/* 		min-width: 40ch; */
+/* 	} */
 
 
-	&>:first-child:nth-last-child(2) {
-		flex-grow: 2;
-		&>div {
-			column-width: 40ch;
-			gap: 40px;
-		}
-	}
+/* 	&>:first-child:nth-last-child(2) { */
+/* 		flex-grow: 2; */
+/* 		&>div { */
+/* 			column-width: 40ch; */
+/* 			gap: 40px; */
+/* 		} */
+/* 	} */
 
-	/* display: grid; */
-	/* grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr)); */
-	/* gap: 40px; */
-	
-	&+* {
-		margin-top: 100px;
-	}
-}
+/* 	/1* display: grid; *1/ */
+/* 	/1* grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr)); *1/ */
+/* 	/1* gap: 40px; *1/ */
 
-main { 
+/* 	&+* { */
+/* 		margin-top: 100px; */
+/* 	} */
+/* } */
+
+[id=main] { 
 	border-top: 3px solid  oklch(0.35 0.03 263.66);
 	margin-top: -3px;
-	padding-top: 140px;
+	/* padding-top: 140px; */
 	background-color:oklch(99% 5% 195deg);
 	position: relative;
 	view-timeline-name: --slogan;
@@ -282,7 +285,7 @@ main {
 	}
 }
 
-body>header, body>div>header {
+[id=header] {
 	border: 3px solid  oklch(0.35 0.03 263.66);
 	background-color:oklch(99% 5% 195deg);
 	box-sizing: border-box;
@@ -293,15 +296,9 @@ body>header, body>div>header {
 	position: sticky;
 	flex-direction: column;
 	gap: 20px;
+	padding: 20px;
 
 	overflow: hidden;
-
-	h1 {
-		/* position: absolute; */
-		top: 20px;
-		left: 20px;
-		margin: 10px;
-	}
 
 
 
@@ -314,7 +311,7 @@ body>header, body>div>header {
 			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
-			
+
 		}
 
 		img {
@@ -331,17 +328,23 @@ body>header, body>div>header {
 	(orientation: landscape) {
 
 		blockquote {
+			align-self: end;
+			margin-left: calc(-760px + 20vw + var(--custom-adjust, 0px));
+			margin-right: 6vw;
 
-			align-self: center;
-			margin-left: 10vw;
-			/* margin-left: calc(-19vw + 200px); */
+			&:has([src*="mbc"]) {
+
+				shape-outside: url("../../img/mbc.webp");
+			}
+			&:has([src*="eric"]) {
+				--custom-adjust: 10vw;
+				shape-outside: url("../../img/eric.webp");
+			}
 		}
 		/* align-items: flex-end; */
 		img {
 			float: left;
 			height: 80vh;
-			width: 42vw;
-			overflow: visible;
 			object-position: top right;
 			shape-margin: 80px;
 			/* margin-left: 2vw; */
@@ -357,18 +360,10 @@ body>header, body>div>header {
 			keep-up     1ms ease-out both;
 
 			animation-timeline: auto, auto, --slogan;
+			shape-outside: inherit;
 
 			/* animation: sketch-talk 4200ms steps(1, end) infinite; */
 
-			&[src*="mbc"] {
-
-				shape-outside: url("../../img/mbc.webp");
-			}
-			&[src*="eric"] {
-
-				shape-outside: url("../../img/eric.webp");
-				margin-left: -10vw;
-			}
 		}
 
 		p {
@@ -379,13 +374,11 @@ body>header, body>div>header {
 }
 
 blockquote {
-	max-width: calc(38vw + 54ch);
 	/* flex-basis: 100%; */
 	/* flex-grow: 1; */
-	background-color: inherit;
+	/* background-color: inherit; */
 	margin-bottom: -60px;
 
-			align-self: center;
 
 
 
@@ -404,10 +397,10 @@ blockquote {
 		font-family: "PP Pangaia";
 		font-weight: 500;
 		font-size: calc(16px + 0.9vmax + 2vh + 0.25vw);
-		line-height: 1.2;
 		text-wrap: pretty;
-		margin: var(--security-margin);
+		margin: 0;
 		animation: shift-up ease-out 1ms both;
+		min-width: initial;
 		animation-timeline: --slogan;
 
 

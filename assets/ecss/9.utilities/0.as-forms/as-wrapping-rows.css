@@ -1,0 +1,19 @@
+@layer utilities {
+	.as-wrapping-rows {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px;
+
+		&>* {
+			flex-grow: 1;
+			flex-basis: 0;
+		}
+
+		&._2-to-1 {
+			&>:where(:first-child) {
+				flex-grow: 2;
+			}
+		}
+	}
+}
+

@@ -1,13 +1,13 @@
 @layer features {
-	html {
+	.enable-autolineheight {
 		--BaselineInterval: calc(var(--Row) / 2);
 		--BaselineMinimum: calc(var(--Row) * .75);
-	}
 
-	select, input, textarea, button, legend, figcaption,
-	p, li, dd, dt, a, q, cite, span, strong, small, th, td,
-	h1, h2, h3, h4, h5, h6 {
-		--LineHeightBase: calc(var(--FontSize) * var(--LineHeightFactor));
-		--LineHeight: max(round(var(--LineHeightBase), var(--BaselineInterval)), var(--BaselineMinimum));
+		select, input, textarea, button, legend, figcaption,
+		p, li, dd, dt, a, q, cite, span, strong, small, th, td,
+		h1, h2, h3, h4, h5, h6 {
+			--LineHeightBase: calc(var(--FontSize) * var(--RowFactor, 1.4125) * var(--LineHeightFactor, 1));
+			--LineHeight: max(round(var(--LineHeightBase), var(--BaselineInterval)), var(--BaselineMinimum));
+		}
 	}
 }

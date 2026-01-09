@@ -22,13 +22,6 @@
 		--FontSize: calc(var(--ScaleLevel, 1) * 1rem); 
 	}
 
-	/* Inheritance in place for child “inline” elements */
-	legend *, figcaption *, button *, p *, li *, dd *, dt *, a *, q *, cite *, span *, small *, th *, td *,
-	h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
-		font-size: inherit;
-		font-style: inherit;
-	}
-
 	select, input, textarea, button, legend, figcaption,
 	p, li, dd, dt, a, q, cite, span, strong, small, th, td,
 	h1, h2, h3, h4, h5, h6 {
@@ -38,6 +31,14 @@
 		font-style: var(--FontStyle, inherit);
 		line-height: var(--LineHeight, inherit); 
 	}
+
+	/* Inheritance in place for child “inline” elements */
+	legend *, figcaption *, button *, p *, li *, dd *, dt *, a *, q *, cite *, span *, small *, th *, td *,
+	h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
+		font-size: inherit;
+		font-style: inherit;
+	}
+
 
 	strong, b {
 		font-weight: var(--FontWeight, 600);
